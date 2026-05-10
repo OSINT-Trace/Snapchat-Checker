@@ -3,7 +3,8 @@
 $curl = curl_init();
 
 curl_setopt_array($curl, [
-	CURLOPT_URL => "https://snapchat-checker.p.rapidapi.com/check_bulk",
+	// API.Market URL: https://prod.api.market/api/v1/osint-trace-1/snapchat-checker/check/snapchat
+CURLOPT_URL => "https://snapchat-checker.p.rapidapi.com/check",
 	CURLOPT_RETURNTRANSFER => true,
 	CURLOPT_ENCODING => "",
 	CURLOPT_MAXREDIRS => 10,
@@ -11,13 +12,10 @@ curl_setopt_array($curl, [
 	CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
 	CURLOPT_CUSTOMREQUEST => "POST",
 	CURLOPT_POSTFIELDS => json_encode([
-		'input' => [
-				'test@gmail.com',
-				'john@doe.com',
-				'19295551234'
-		]
+		'input' => 'test@example.com'
 	]),
-	CURLOPT_HTTPHEADER => [
+	// API.Market Header: X-Api-Key: YOUR_API_KEY
+CURLOPT_HTTPHEADER => [
 		"Content-Type: application/json",
 		"x-rapidapi-host: snapchat-checker.p.rapidapi.com",
 		"x-rapidapi-key: Sign Up for Key"

@@ -4,7 +4,7 @@ const options = {
 	method: 'POST',
 	hostname: 'snapchat-checker.p.rapidapi.com',
 	port: null,
-	path: '/check_bulk',
+	path: '/check',
 	headers: {
 		'x-rapidapi-key': 'Sign Up for Key',
 		'x-rapidapi-host': 'snapchat-checker.p.rapidapi.com',
@@ -26,10 +26,6 @@ const req = http.request(options, function (res) {
 });
 
 req.write(JSON.stringify({
-  input: [
-    'test@gmail.com',
-    'john@doe.com',
-    '19295551234'
-  ]
+  input: "test@example.com"
 }));
 req.end();

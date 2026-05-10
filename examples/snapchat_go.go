@@ -9,13 +9,15 @@ import (
 
 func main() {
 
-	url := "https://snapchat-checker.p.rapidapi.com/check_bulk"
+	// API.Market URL: https://prod.api.market/api/v1/osint-trace-1/snapchat-checker/check/snapchat
+url := "https://snapchat-checker.p.rapidapi.com/check"
 
-	payload := strings.NewReader("{"input":["test@gmail.com","john@doe.com","19295551234"]}")
+	payload := strings.NewReader("{"input":"test@example.com"}")
 
 	req, _ := http.NewRequest("POST", url, payload)
 
-	req.Header.Add("x-rapidapi-key", "Sign Up for Key")
+	// API.Market Header: X-Api-Key: YOUR_API_KEY
+req.Header.Add("x-rapidapi-key", "Sign Up for Key")
 	req.Header.Add("x-rapidapi-host", "snapchat-checker.p.rapidapi.com")
 	req.Header.Add("Content-Type", "application/json")
 

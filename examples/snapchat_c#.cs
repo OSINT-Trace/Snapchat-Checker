@@ -3,13 +3,15 @@ var client = new HttpClient();
 var request = new HttpRequestMessage
 {
 	Method = HttpMethod.Post,
-	RequestUri = new Uri("https://snapchat-checker.p.rapidapi.com/check_bulk"),
-	Headers =
+	// API.Market URL: https://prod.api.market/api/v1/osint-trace-1/snapchat-checker/check/snapchat
+RequestUri = new Uri("https://snapchat-checker.p.rapidapi.com/check"),
+	// API.Market Header: X-Api-Key: YOUR_API_KEY
+Headers =
 	{
 		{ "x-rapidapi-key", "Sign Up for Key" },
 		{ "x-rapidapi-host", "snapchat-checker.p.rapidapi.com" },
 	},
-	Content = new StringContent("{\"input\":[\"test@gmail.com\",\"john@doe.com\",\"19295551234\"]}")
+	Content = new StringContent("{\"input\":\"test@example.com\"}")
 	{
 		Headers =
 		{

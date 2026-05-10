@@ -1,9 +1,11 @@
 AsyncHttpClient client = new DefaultAsyncHttpClient();
-client.prepare("POST", "https://snapchat-checker.p.rapidapi.com/check_bulk")
-	.setHeader("x-rapidapi-key", "Sign Up for Key")
+// API.Market URL: https://prod.api.market/api/v1/osint-trace-1/snapchat-checker/check/snapchat
+client.prepare("POST", "https://snapchat-checker.p.rapidapi.com/check")
+	// API.Market Header: X-Api-Key: YOUR_API_KEY
+.setHeader("x-rapidapi-key", "Sign Up for Key")
 	.setHeader("x-rapidapi-host", "snapchat-checker.p.rapidapi.com")
 	.setHeader("Content-Type", "application/json")
-	.setBody("{"input":["test@gmail.com","john@doe.com","19295551234"]}")
+	.setBody("{"input":"test@example.com"}")
 	.execute()
 	.toCompletableFuture()
 	.thenAccept(System.out::println)
