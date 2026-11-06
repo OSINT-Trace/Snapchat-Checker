@@ -4,7 +4,12 @@
 
 An enterprise-grade OSINT API to verify Snapchat account existence and extract rich profile intelligence (3D Bitmoji avatars, display titles, subscriber counts, official Snap Star badges, vector Snapcodes, and direct profile URLs) by username, email address, or phone number.
 
-## Table of Contents
+> ⚠️ **Metadata Availability & Privacy Notice**:
+> Extracted metadata is **conditional and never guaranteed**. Availability strictly depends on:
+> 1. **Input Format**: Username queries inspect public web profiles to extract 3D Bitmojis, subscriber/follower metrics, biographies, official Star badges, and Snapcode SVGs. Email and phone number queries bypass the web profile probe to verify presence directly through Snapchat's mobile authentication gateway, returning presence confirmation only (`live: true/false`, with `metadata: null`).
+> 2. **Platform & Privacy Settings**: Snapchat accounts with strict privacy settings, private profiles, or those not indexed in the public creator directory omit public profile metadata.
+
+---
 - [Features](#features)
 - [Getting Started](#getting-started)
   - [1. Get API Key](#1-get-api-key)
@@ -110,7 +115,7 @@ curl --request POST \
 
 ## Response Format
 
-### Account Found (With Metadata)
+### 1. Account Found via Username (Public Profile Metadata)
 ```json
 {
   "live": true,
@@ -129,7 +134,16 @@ curl --request POST \
 }
 ```
 
-### Account Not Found
+### 2. Account Found via Email or Phone Number (Mobile Gateway Presence)
+```json
+{
+  "live": true,
+  "note": null,
+  "metadata": null
+}
+```
+
+### 3. Account Not Found
 ```json
 {
   "live": false,
